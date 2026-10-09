@@ -48,17 +48,18 @@ window.onscroll = () => {
 
 // ScrollReveal Animations
 if (typeof ScrollReveal !== 'undefined') {
+  const isMobile = window.innerWidth <= 768;
   const sr = ScrollReveal({
-    distance: '60px',
-    duration: 1800,
-    delay: 150,
+    distance: isMobile ? '25px' : '60px',
+    duration: 1600,
+    delay: 100,
     reset: false
   });
 
   sr.reveal('.home-content, .heading, .section-subtext', { origin: 'top' });
   sr.reveal('.home-img, .skills-card, .project-card, .timeline-item, .edu-card, .cert-card, .contact-wrapper', { origin: 'bottom', interval: 100 });
-  sr.reveal('.about-text-card', { origin: 'left' });
-  sr.reveal('.about-stats-container', { origin: 'right' });
+  sr.reveal('.about-text-card', { origin: 'bottom' });
+  sr.reveal('.about-stats-container', { origin: 'bottom', delay: 150 });
 }
 
 // Typed.js Dynamic Subheading
