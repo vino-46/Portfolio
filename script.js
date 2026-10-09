@@ -1,58 +1,78 @@
-let menuIcon = document.querySelector('#menu-icon');
-let navbar   = document.querySelector('.navbar');
+// Toggle Mobile Menu
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
 
-menuIcon.onclick = () =>{
+if (menuIcon && navbar) {
+  menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-};
+  };
 
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-let header   = document.querySelector('header');
+  // Close menu when a link is clicked
+  navbar.querySelectorAll('a').forEach(link => {
+    link.onclick = () => {
+      menuIcon.classList.remove('bx-x');
+      navbar.classList.remove('active');
+    };
+  });
+}
+
+// Active Nav Link On Scroll & Sticky Header
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('header nav a');
+const header = document.querySelector('header');
 
 window.onscroll = () => {
-  let top = window.scrollY;
+  const top = window.scrollY;
 
   sections.forEach(sec => {
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-    let id     = sec.getAttribute('id');
+    const offset = sec.offsetTop - 150;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
 
     if (top >= offset && top < offset + height) {
       navLinks.forEach(link => {
         link.classList.remove('active');
       });
-      document
-        .querySelector(`header nav a[href*="${id}"]`)
-        .classList.add('active');
+      const currentActive = document.querySelector(`header nav a[href*="${id}"]`);
+      if (currentActive) {
+        currentActive.classList.add('active');
+      }
     }
   });
 
-  header.classList.toggle('sticky', window.scrollY > 100);
-
-   menuIcon.classList.remove('bx-x')
-   navbar.classList.remove('active');
+  if (header) {
+    header.classList.toggle('sticky', window.scrollY > 80);
+  }
 };
 
+// ScrollReveal Animations
+if (typeof ScrollReveal !== 'undefined') {
+  const sr = ScrollReveal({
+    distance: '60px',
+    duration: 1800,
+    delay: 150,
+    reset: false
+  });
 
-ScrollReveal({
-  
-  distance: '80px',
-  duration: 2000,
-  delay: 200
-});
+  sr.reveal('.home-content, .heading, .section-subtext', { origin: 'top' });
+  sr.reveal('.home-img, .skills-card, .project-card, .timeline-item, .edu-card, .cert-card, .contact-wrapper', { origin: 'bottom', interval: 100 });
+  sr.reveal('.about-text-card', { origin: 'left' });
+  sr.reveal('.about-stats-container', { origin: 'right' });
+}
 
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img, .skills-container, .project-box, .contact form',  { origin: 'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img' , { origin: 'left' });
-ScrollReveal().reveal('.home-content p, .about-content' , { origin: 'right' });
-
-const typed = new Typed('.multiple-text', {
-  strings: ['Frontend Developer', 'UI/UX Designer'],
-  typeSpeed: 100,
-  backSpeed: 100,
-  backDelay: 1000,
-  loop: true
-});
-
-
+// Typed.js Dynamic Subheading
+if (typeof Typed !== 'undefined') {
+  new Typed('.multiple-text', {
+    strings: [
+      'Full-Stack Developer',
+      'Software Engineer',
+      'AI Automation Builder',
+      'MERN Stack Developer'
+    ],
+    typeSpeed: 70,
+    backSpeed: 50,
+    backDelay: 1500,
+    loop: true
+  });
+}
