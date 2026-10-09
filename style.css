@@ -1310,7 +1310,7 @@ section {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    padding: 37rem 5% 12rem;
+    padding: max(47vh, 32rem) 5% 10rem;
     overflow: hidden;
     gap: 0;
   }
@@ -1322,10 +1322,10 @@ section {
     background: linear-gradient(
       180deg,
       rgba(8, 12, 20, 0) 0%,
-      rgba(8, 12, 20, 0) 30%,
-      rgba(8, 12, 20, 0.72) 44%,
-      rgba(8, 12, 20, 0.96) 60%,
-      var(--bg-color) 82%,
+      rgba(8, 12, 20, 0) 36%,
+      rgba(8, 12, 20, 0.72) 48%,
+      rgba(8, 12, 20, 0.96) 64%,
+      var(--bg-color) 86%,
       var(--bg-color) 100%
     );
     z-index: 1;
@@ -1420,7 +1420,7 @@ section {
 @media (max-width: 500px) {
   .home {
     min-height: 100vh;
-    padding: 36rem 5% 12rem;
+    padding: max(47vh, 30rem) 5% 10rem;
   }
 
   .home-content h1 {
