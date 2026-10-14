@@ -1,7 +1,7 @@
 # 🚀 Vinoth M — Developer Portfolio
 
 Welcome to the source code for my personal developer portfolio!  
-Live Website: [vinoth-46.github.io/portfolio](https://vinoth-46.github.io/portfolio/)
+Live Website: [vinoth-46.github.io/portfolio](https://vino-46.github.io/Portfolio/)
 
 ---
 
